@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Birthday Surprise for MY LOVE❤️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Dancing Script', cursive; /* Romantic font */
+            text-align: center;
+            background: linear-gradient(to bottom, #ff69b4, #ffb6c1); /* Pink gradient */
+            color: #fff;
+            padding: 50px;
+            overflow-x: hidden;
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            background: linear-gradient(to right, #ff1493, #ff69b4);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        #surprise {
+            display: none;
+            margin-top: 30px;
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .heart {
+            position: absolute;
+            color: #ff1493;
+            font-size: 2em;
+            animation: float 3s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        #love-meter {
+            width: 200px;
+            height: 20px;
+            background: #ddd;
+            border-radius: 10px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        #love-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, #ff1493, #ff69b4);
+            transition: width 2s;
+        }
+        #slideshow {
+            max-width: 400px;
+            margin: 20px auto;
+            position: relative;
+        }
+        #slideshow img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .hidden { display: none; }
+        /* Add these for better mobile handling */
+@media (max-width: 768px) {
+    body {
+        padding: 20px; /* Reduce padding on small screens */
+    }
+    h1 {
+        font-size: 2em; /* Smaller title */
+    }
+    button {
+        padding: 12px 25px; /* Adjust button size */
+        font-size: 16px;
+    }
+    #love-meter {
+        width: 150px; /* Narrower meter */
+    }
+    #slideshow {
+        max-width: 90%; /* More space for images */
+    }
+    .heart {
+        font-size: 1.5em; /* Smaller hearts */
+    }
+}
+    </style>
+</head>
+<body>
+    <h1>Happy Birthday, THATAM💕! <i class="fas fa-heart"></i></h1>
+    <p>Click the button to reveal my love for you...</p>
+    <button onclick="revealSurprise()">Reveal My Surprise</button>
+    
+    <div id="surprise">
+        <h2>🎉 You're My Everything! 🎉</h2>
+        <p>Dear THATAM💕, from the moment we met, you've filled my life with joy. Happy birthday! Here's to more adventures together. I love you more than words can say. [TODAY IS YOUR THATAM. SPEND THE DAY HAPPILY]</p>
+        
+        <!-- Love Meter -->
+        <p>However here to see how much I love you:</p>
+        <div id="love-meter" onmouseover="fillLoveMeter()">
+            <div id="love-fill"></div>
+        </div>
+        
+        <!-- Photo Slideshow -->
+        <div id="slideshow">
+            <img id="slide" src="IMG-20260123-WA0014.jpg" alt="Memory 1">
+            <button onclick="changeSlide(-1)">❮</button>
+            <button onclick="changeSlide(1)">❯</button>
+        </div>
+        <p>Some of our favorite memories...</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        let slideIndex = 0;
+        const slides = [
+            "coup 1.jpg",  // Replace with real photo URLs
+            "coup 2.jpg",
+            "coup 3.jpg"
+        ];
+
+        function revealSurprise() {
+            document.getElementById('surprise').style.display = 'block';
+            confetti({
+                particleCount: 200,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff1493', '#ff69b4', '#ffb6c1']
+            });
+            // Add floating hearts
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => createHeart(), i * 200);
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement('i');
+            heart.className = 'fas fa-heart heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 3000);
+        }
+
+        function fillLoveMeter() {
+            document.getElementById('love-fill').style.width = '100%';
+        }
+
+        function changeSlide(n) {
+            slideIndex += n;
+            if (slideIndex < 0) slideIndex = slides.length - 1;
+            if (slideIndex >= slides.length) slideIndex = 0;
+            document.getElementById('slide').src = slides[slideIndex];
+        }
+    </script>
+</body>
+</html>
